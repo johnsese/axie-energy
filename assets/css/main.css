@@ -1,0 +1,104 @@
+body {
+    background-color: rgba(52.000000700354576, 29.000000171363354, 39.00000147521496, 1);
+    font-family: Roboto Slab;
+    font-style: normal;
+}
+
+.container {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pageTitleContainer {
+    width: 400px;
+    height: 90px;
+    background: #77451E;
+}
+
+.pageTitle {
+    width: 360px;
+    height: 56px;
+    left: 801px;
+    top: 35px;
+    background: #D5A271;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    /* identical to box height */
+    color: #000000
+}
+
+.energyCount {
+    width: 480px;
+    height: 250px;
+    background: #F2F7FB;
+}
+
+.energyTitle {
+    padding-top: 20px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    /* identical to box height */
+    color: #462D17;
+}
+
+.energyCountNumber {
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 79px;
+    color: #000000;
+}
+
+.btnNext {
+    width: 200px !important;
+    height: 83px !important;
+    background: #014E42 !important;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 66px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.btnReset {
+    width: 200px;
+    height: 83px;
+    background: #7B1727;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 66px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.btnUnaryOperator {
+    width: 70px;
+    height: 70px;
+    left: 220px;
+    top: 240px;
+    background: #CAD942;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 59px;
+    color: #000000;
+}
+
+
+/* .energyHistory {
+    width: 300px;
+    height: 638px;
+    left: 801px;
+    top: 35px;
+    background: #77451E;
+} */
