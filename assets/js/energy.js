@@ -143,7 +143,7 @@ function resetEnergy() {
     Swal.fire({
         title: 'Are you sure?',
         text: "Will reset the current round information",
-        iconHtml: '<img src="./assets/images/slp_width.jpg" width="auto" height="120">',
+        iconHtml: '<img src="./assets/images/slp.png" width="auto" height="120">',
         customClass: {
             icon: 'no-border'
         },
