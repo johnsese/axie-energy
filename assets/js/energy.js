@@ -5,10 +5,10 @@ const MAX_ENERGY = 10;
 const MIN_ENERGY = 0;
 
 const KEYCODES = {
-    "space": 32,
-    "left": 37,
-    "right": 39,
-    "esc": 27
+    space: 32,
+    left: 37,
+    right: 39,
+    esc: 27
 };
 
 
@@ -47,6 +47,8 @@ $(document).on('keydown', function(event) {
             break;
         case KEYCODES.esc:
             resetEnergy();
+            break;
+        default:
             break;
     }
 });
@@ -88,28 +90,34 @@ function setRoundCount(iRound) {
  * Decrement energy by 1
  */
 function decrementEnergy() {
+    if (total_energy > 0) {
+        $.notify('Enemy loses an energy', {
+            autoHide: true,
+            autoHideDelay: '2000',
+            className: 'error',
+            position: 'bottom right'
+        });
+    }
+
     total_energy--;
     setEnergyCount(total_energy);
-    $.notify('Enemy spend/loses an energy', {
-        autoHide: true,
-        autoHideDelay: '2000',
-        className: 'error',
-        position: 'bottom right'
-    });
 }
 
 /**
  * Increment energy by 1
  */
 function incrementEnergy() {
+    if (total_energy < 10) {
+        $.notify('Enemy gains an energy', {
+            autoHide: true,
+            autoHideDelay: '2000',
+            className: 'success',
+            position: 'bottom right'
+        });
+    }
+
     total_energy++;
     setEnergyCount(total_energy);
-    $.notify('Enemy gains energy', {
-        autoHide: true,
-        autoHideDelay: '2000',
-        className: 'success',
-        position: 'bottom right'
-    });
 }
 
 /**
@@ -120,7 +128,7 @@ function moveToNextRound() {
     current_round++;
     setEnergyCount(total_energy);
     setRoundCount(current_round);
-    $.notify('Clicked next round', {
+    $.notify('Round: ' + current_round, {
         autoHide: true,
         autoHideDelay: '2000',
         className: 'info',
