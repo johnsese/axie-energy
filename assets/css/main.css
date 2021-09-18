@@ -4,36 +4,39 @@ body {
     font-style: normal;
 }
 
+.no-border {
+    border: 0 !important;
+}
+
 .container {
     padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.pageTitleContainer {
-    width: 400px;
-    height: 90px;
-    background: #77451E;
+.pageTitleImage {
+    background-image: url(../images/round_full.png);
+    background-size: 500px !important;
+    width: 500px;
+    height: 74px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
 }
 
-.pageTitle {
-    width: 360px;
-    height: 56px;
-    left: 801px;
-    top: 35px;
-    background: #D5A271;
-    font-family: Roboto Slab;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 40px;
-    /* identical to box height */
-    color: #000000
+.pageTitleText {
+    position: absolute;
+    padding-top: 6px;
+    font-family: 'Changa', sans-serif;
+    font-size: 40px;
+    text-shadow: 3px 3px #5d320b;
+    color: white;
+    z-index: 2;
 }
 
 .energyCount {
     width: 480px;
-    height: 250px;
+    height: 320px;
     background: #F2F7FB;
 }
 
@@ -42,24 +45,46 @@ body {
     font-weight: 500;
     font-size: 40px;
     line-height: 53px;
-    /* identical to box height */
     color: #462D17;
 }
 
 .energyCountNumber {
+    margin-left: -30px;
     padding-top: 15px;
-    font-weight: bold;
-    font-size: 60px;
+    font-family: 'Changa', sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
     line-height: 79px;
-    color: #000000;
+    color: white;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #782e38;
+    z-index: 2;
+}
+
+.backgroundEnergy {
+    top: 214px;
+    position: absolute;
+    background-image: url(../images/energy.png);
+    background-size: 100px;
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.roundCountName {
+    font-size: 30px;
+}
+
+.btnNext:hover {
+    background-color: #28a745 !important;
 }
 
 .btnNext {
-    width: 200px !important;
+    width: 180px !important;
     height: 83px !important;
     background: #014E42 !important;
-    font-family: Roboto Slab;
-    font-style: normal;
     font-weight: bold;
     font-size: 50px;
     line-height: 66px;
@@ -68,11 +93,9 @@ body {
 }
 
 .btnReset {
-    width: 200px;
+    width: 180px;
     height: 83px;
     background: #7B1727;
-    font-family: Roboto Slab;
-    font-style: normal;
     font-weight: bold;
     font-size: 50px;
     line-height: 66px;
@@ -83,11 +106,8 @@ body {
 .btnUnaryOperator {
     width: 70px;
     height: 70px;
-    left: 220px;
-    top: 240px;
     background: #CAD942;
-    font-family: Roboto Slab;
-    font-style: normal;
+    font-family: 'Changa', sans-serif;
     font-weight: bold;
     font-size: 45px;
     line-height: 59px;
