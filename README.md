@@ -1,5 +1,7 @@
 # Axie Infinity Opponent Energy Counter
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cc515d74-87df-472c-a25d-35125cce76ca/deploy-status)](https://app.netlify.com/sites/axiefy-energy/deploys)
+
 ## About The Project
 [![Product Name Screen Shot][product-screenshot]](#)
 A Simple Axie Infinity Opponent Energy Counter.
