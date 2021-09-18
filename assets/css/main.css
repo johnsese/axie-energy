@@ -34,6 +34,16 @@ body {
     z-index: 2;
 }
 
+.pageAuthorText {
+    position: absolute;
+    padding-top: 50px;
+    padding-left: 300px;
+    font-family: 'Changa', sans-serif;
+    font-size: 10px;
+    color: black;
+    z-index: 2;
+}
+
 .energyCount {
     width: 480px;
     height: 320px;
