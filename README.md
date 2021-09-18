@@ -4,6 +4,25 @@
 [![Product Name Screen Shot][product-screenshot]](#)
 A Simple Axie Infinity Opponent Energy Counter.
 
+## Usage
+
+### Buttons
+* `-` - decrease energy by one
+* `+` - increase energy by one
+* `Next` - go to the next round
+* `Reset`- reset round and energy
+* 
+### Shortcut keys available
+* `arrow-left` - decrease energy by one
+* `arrow-right` - increase energy by one
+* `space` - go to the next round
+* `esc` - reset round and energy
+
+## Roadmap
+* Energy per round history
+
+See the [open issues](https://github.com/johnsese/axie-energy/issues) for a list of proposed features (and known issues).
+
 ##  Built With
 
 * [Boostrap 5](https://getbootstrap.com/)
