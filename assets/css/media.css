@@ -1,0 +1,57 @@
+@media (max-width: 768px) {
+    html,
+    body {
+        width: auto !important;
+        overflow-x: hidden !important;
+    }
+    .container {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media (max-width: 499px) {
+    .container {
+        padding-top: 5px !important;
+    }
+    .pageTitleImage {
+        background-size: 320px !important;
+        width: 320px !important;
+    }
+    .pageTitleText {
+        padding-top: 14px !important;
+        font-size: 28px !important;
+        text-shadow: 2px 2px #5d320b !important;
+    }
+    .pageAuthorText {
+        padding-top: 45px !important;
+        padding-left: 190px !important;
+        font-size: 8px !important;
+    }
+    .energyCount {
+        width: 300px !important;
+        height: 300px !important;
+    }
+    .energyTitle {
+        padding-top: 10px !important;
+        font-weight: 200 !important;
+        font-size: 30px !important;
+    }
+    .energyCountNumber {
+        padding-top: 15px !important;
+    }
+    .backgroundEnergy {
+        top: 170px !important;
+        background-size: 110px !important;
+        height: 110px !important;
+        width: 110px !important;
+    }
+    .roundCountName {
+        font-size: 25px !important;
+    }
+    .btnActions button {
+        width: 130px !important;
+        height: 83px !important;
+        font-size: 40px !important;
+    }
+}

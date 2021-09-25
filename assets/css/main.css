@@ -1,6 +1,7 @@
+@import url(media.css);
 body {
     background-color: rgba(52.000000700354576, 29.000000171363354, 39.00000147521496, 1);
-    font-family: Roboto Slab;
+    font-family: 'Changa', sans-serif;
     font-style: normal;
 }
 
@@ -16,7 +17,7 @@ body {
 
 .pageTitleImage {
     background-image: url(../images/round_full.png);
-    background-size: 500px !important;
+    background-size: 500px;
     width: 500px;
     height: 74px;
     background-repeat: no-repeat;
@@ -27,7 +28,6 @@ body {
 .pageTitleText {
     position: absolute;
     padding-top: 6px;
-    font-family: 'Changa', sans-serif;
     font-size: 40px;
     text-shadow: 3px 3px #5d320b;
     color: white;
@@ -38,7 +38,6 @@ body {
     position: absolute;
     padding-top: 50px;
     padding-left: 300px;
-    font-family: 'Changa', sans-serif;
     font-size: 10px;
     color: black;
     z-index: 2;
@@ -60,8 +59,7 @@ body {
 
 .energyCountNumber {
     margin-left: -30px;
-    padding-top: 15px;
-    font-family: 'Changa', sans-serif;
+    padding-top: 35px;
     font-weight: bolder;
     font-size: 50px;
     line-height: 79px;
@@ -91,10 +89,9 @@ body {
     background-color: #28a745 !important;
 }
 
-.btnNext {
-    width: 180px !important;
-    height: 83px !important;
-    background: #014E42 !important;
+.btnActions button {
+    width: 180px;
+    height: 83px;
     font-weight: bold;
     font-size: 50px;
     line-height: 66px;
@@ -102,22 +99,23 @@ body {
     color: #FFFFFF;
 }
 
+.btnActions div {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.btnNext {
+    background: #014E42 !important;
+}
+
 .btnReset {
-    width: 180px;
-    height: 83px;
     background: #7B1727;
-    font-weight: bold;
-    font-size: 50px;
-    line-height: 66px;
-    /* identical to box height */
-    color: #FFFFFF;
 }
 
 .btnUnaryOperator {
     width: 70px;
     height: 70px;
     background: #CAD942;
-    font-family: 'Changa', sans-serif;
     font-weight: bold;
     font-size: 45px;
     line-height: 59px;
