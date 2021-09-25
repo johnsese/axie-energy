@@ -36,4 +36,4 @@ See the [open issues](https://github.com/johnsese/axie-energy/issues) for a list
 
 Distributed under the GNU General Public License. See `LICENSE` for more information.
 
-[product-screenshot]: assets/images/screenshot.png
+[product-screenshot]: assets/images/screenshot_desktop.png
