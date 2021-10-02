@@ -13,12 +13,14 @@ A Simple Axie Infinity Opponent Energy Counter.
 * `+` - increase energy by one
 * `Next` - go to the next round
 * `Reset`- reset round and energy
+* `Undo`- undo last action
 
 ### Shortcut keys available
 * `arrow-left` - decrease energy by one
 * `arrow-right` - increase energy by one
 * `space` - go to the next round
 * `esc` - reset round and energy
+* `backspace` - undo last action
 
 ## Roadmap
 * Energy per round history
