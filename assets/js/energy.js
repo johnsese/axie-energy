@@ -1,52 +1,52 @@
-const ORIGINAL_ENERGY = 3;
-const ORIGINAL_ROUND = 1;
-const NEXT_ROUND_ENERGY = 2;
+const MAIN_ROUND = 1;
+const MAIN_ENERGY = 3;
 const MAX_ENERGY = 10;
 const MIN_ENERGY = 0;
+const NEXT_ROUND_ENERGY = 2;
 
 const KEYCODES = {
     space: 32,
     left: 37,
     right: 39,
-    esc: 27
+    esc: 27,
+    backspace: 8
 };
 
+const MAIN_ROUND_DETAIL = {
+    round: MAIN_ROUND,
+    energy: MAIN_ENERGY
+};
 
-let doc = $(document);
-let decrement_selector = $('.btnDecrement');
-let increment_selector = $('.btnIncrement');
-let next_selector = $('.btnNext');
-let reset_selector = $('.btnReset');
+let roundDetails = [];
 
-let total_energy = ORIGINAL_ENERGY;
-let current_round = ORIGINAL_ROUND;
+/**
+ * On-click actions
+ */
+$('.btnDecrement').on('click', decrementEnergyAction);
+$('.btnIncrement').on('click', incrementEnergyAction);
+$('.btnNext').on('click', moveToNextRoundAction);
+$('.btnReset').on('click', resetAction);
+$('.btnUndo').on('click', undoAction);
 
-// Decrement actions
-decrement_selector.click(decrementEnergy);
-
-// Increment actions
-increment_selector.click(incrementEnergy);
-
-// Move to next round actions
-next_selector.click(moveToNextRound);
-
-// Reset actions
-reset_selector.click(resetEnergy);
-
-// Using keyboard shortcut keys
-$(document).on('keydown', function(event) {
+/**
+ * Using keyboard shortcut keys
+ */
+$(document).on('keyup', function(event) {
     switch (event.keyCode) {
         case KEYCODES.space:
-            moveToNextRound();
+            moveToNextRoundAction();
             break;
         case KEYCODES.left:
-            decrementEnergy();
+            decrementEnergyAction();
             break;
         case KEYCODES.right:
-            incrementEnergy();
+            incrementEnergyAction();
             break;
         case KEYCODES.esc:
-            resetEnergy();
+            resetAction();
+            break;
+        case KEYCODES.backspace:
+            undoAction();
             break;
         default:
             break;
@@ -54,116 +54,148 @@ $(document).on('keydown', function(event) {
 });
 
 /**
- * Set total energy count in current round
+ * Initialize round details
  * 
- * @param int iTotalEnergy 
+ * @param boolean reset
  */
-function setEnergyCount(iTotalEnergy) {
+function initRoundDetails(reset) {
+    reset = reset || false;
+    roundDetails = [];
+    roundDetails.push(MAIN_ROUND_DETAIL);
+    setRoundDetailsToDOM(reset);
+}
+
+/**
+ * Set round details to DOM
+ * 
+ * @param boolean override
+ */
+function setRoundDetailsToDOM(override) {
+    override = override || false;
+    if (roundDetails.length > MAIN_ROUND || override) {
+        setRoundCount();
+        setEnergyCount();
+    }
+}
+
+/**
+ * Set round details to DOM
+ */
+function setRoundCount() {
+    let round_selector = $('.roundCount');
+
+    round_selector.text(roundDetails[roundDetails.length - 1].round);
+}
+
+/**
+ * Set energy details to DOM
+ */
+function setEnergyCount() {
     let total_energy_selector = $('.energyCountNumber');
+    let lastRoundEnergy = roundDetails[roundDetails.length - 1].energy;
 
-    iTotalEnergy = (iTotalEnergy >= 10) ? MAX_ENERGY : iTotalEnergy;
-    iTotalEnergy = (iTotalEnergy <= 0) ? MIN_ENERGY : iTotalEnergy;
+    lastRoundEnergy = (lastRoundEnergy >= 10) ? MAX_ENERGY : lastRoundEnergy;
 
-    total_energy = iTotalEnergy;
-
-    if (total_energy === 10) {
+    if (lastRoundEnergy === 10) {
         total_energy_selector.css('margin-left', '-50px');
     } else {
         total_energy_selector.css('margin-left', '-30px');
     }
 
-    total_energy_selector.text(iTotalEnergy);
+    total_energy_selector.text(lastRoundEnergy);
 }
 
 /**
- * Set round count
+ * Returns a new array of action details
  * 
- * @param int iRound 
+ * @returns object
  */
-function setRoundCount(iRound) {
-    let round_selector = $('.roundCount');
-
-    round_selector.text(iRound);
+function setActionDetails() {
+    return {
+        round: roundDetails[roundDetails.length - 1].round,
+        energy: roundDetails[roundDetails.length - 1].energy
+    };
 }
 
 /**
- * Decrement energy by 1
+ * Undo action
  */
-function decrementEnergy() {
-    if (total_energy > 0) {
-        $.notify('Enemy loses an energy', {
-            autoHide: true,
-            autoHideDelay: '2000',
-            className: 'error',
-            position: 'bottom right'
-        });
+function undoAction() {
+    if (roundDetails.length > MAIN_ROUND) {
+        roundDetails.pop();
+        setRoundDetailsToDOM(true);
+        notification('An action has been undo', 'info');
     }
-
-    total_energy--;
-    setEnergyCount(total_energy);
 }
 
 /**
- * Increment energy by 1
+ * Decrement energy action
  */
-function incrementEnergy() {
-    if (total_energy < 10) {
-        $.notify('Enemy gains an energy', {
-            autoHide: true,
-            autoHideDelay: '2000',
-            className: 'success',
-            position: 'bottom right'
-        });
+function decrementEnergyAction() {
+    let lastRoundDetails = roundDetails[roundDetails.length - 1];
+    if (lastRoundDetails.energy > MIN_ENERGY) {
+
+        let newRoundDetails = setActionDetails();
+        newRoundDetails.energy = newRoundDetails.energy - 1;
+        roundDetails.push(newRoundDetails);
+
+        setRoundDetailsToDOM();
+        notification('Enemy loses an energy', 'error');
     }
-
-    total_energy++;
-    setEnergyCount(total_energy);
 }
 
 /**
- * Move to the next round
+ * Increment energy action
  */
-function moveToNextRound() {
-    total_energy += NEXT_ROUND_ENERGY;
-    current_round++;
-    setEnergyCount(total_energy);
-    setRoundCount(current_round);
-    $.notify('Round: ' + current_round, {
-        autoHide: true,
-        autoHideDelay: '2000',
-        className: 'info',
-        position: 'bottom right'
-    });
+function incrementEnergyAction() {
+    let lastRoundDetails = roundDetails[roundDetails.length - 1];
+    if (lastRoundDetails.energy < MAX_ENERGY) {
+
+        let newRoundDetails = setActionDetails();
+        newRoundDetails.energy = newRoundDetails.energy + 1;
+        roundDetails.push(newRoundDetails);
+
+        setRoundDetailsToDOM();
+        notification('Enemy gains an energy', 'success');
+    }
 }
 
 /**
- * Reset round
+ * Move to the next round action
  */
-function resetEnergy() {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Will reset the current round information",
-        iconHtml: '<img src="./assets/images/slp.png" width="auto" height="120">',
-        customClass: {
+function moveToNextRoundAction() {
+    let lastRoundDetails = roundDetails[roundDetails.length - 1];
+    let newRoundDetails = setActionDetails();
+    newRoundDetails.round = newRoundDetails.round + 1;
+    if (lastRoundDetails.energy < MAX_ENERGY) {
+        let newEnergy = newRoundDetails.energy + NEXT_ROUND_ENERGY;
+        newRoundDetails.energy = (newEnergy >= 10) ? MAX_ENERGY : newEnergy;
+    }
+    roundDetails.push(newRoundDetails);
+    setRoundDetailsToDOM();
+    notification('Round: ' + lastRoundDetails.round, 'info');
+}
+
+/**
+ * Reset round action
+ */
+function resetAction() {
+    confirmation(
+        'Are you sure?',
+        'Will reset the current round information',
+        '<img src="./assets/images/slp.png" width="auto" height="120">', {
             icon: 'no-border'
         },
-        showCancelButton: true,
-        confirmButtonColor: '#28a745',
-        cancelButtonColor: '#c82333',
-        confirmButtonText: 'Yes, reset it!'
-    }).then((result) => {
+        'Yes, reset it!'
+    ).then((result) => {
         if (result.isConfirmed) {
-            total_energy = ORIGINAL_ENERGY;
-            current_round = ORIGINAL_ROUND;
-            setEnergyCount(total_energy);
-            setRoundCount(current_round);
-            $.notify('Reset success', {
-                autoHide: true,
-                autoHideDelay: '2000',
-                className: 'success',
-                position: 'bottom right'
-            });
+            initRoundDetails(true);
+            notification('Reset success', 'success');
         }
     })
 
 }
+
+(() => {
+    initRoundDetails();
+})();

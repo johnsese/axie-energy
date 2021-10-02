@@ -53,16 +53,14 @@ body {
     padding-top: 20px;
     font-weight: 500;
     font-size: 40px;
-    line-height: 53px;
     color: #462D17;
 }
 
 .energyCountNumber {
     margin-left: -30px;
-    padding-top: 35px;
+    padding-top: 30px;
     font-weight: bolder;
     font-size: 50px;
-    line-height: 79px;
     color: white;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #782e38;
@@ -90,18 +88,17 @@ body {
 }
 
 .btnActions button {
-    width: 180px;
+    width: 130px;
     height: 83px;
     font-weight: bold;
-    font-size: 50px;
-    line-height: 66px;
+    font-size: 40px;
     /* identical to box height */
     color: #FFFFFF;
 }
 
 .btnActions div {
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .btnNext {
@@ -118,7 +115,6 @@ body {
     background: #CAD942;
     font-weight: bold;
     font-size: 45px;
-    line-height: 59px;
     color: #000000;
 }
 
