@@ -3,7 +3,11 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cc515d74-87df-472c-a25d-35125cce76ca/deploy-status)](https://app.netlify.com/sites/axiefy-energy/deploys)
 
 ## About The Project
-[![Product Name Screen Shot][product-screenshot]](#)
+<p align="center">
+  <img src="assets/images/screenshot_desktop.png" width="auto" height="350px" style="padding-right: 50px"/>
+  <img src="assets/images/screenshot_iphonex.png" width="auto" height="350px"/>
+</p>
+
 A Simple Axie Infinity Opponent Energy Counter.
 
 ## Usage
@@ -37,5 +41,3 @@ See the [open issues](https://github.com/johnsese/axie-energy/issues) for a list
 ## License
 
 Distributed under the GNU General Public License. See `LICENSE` for more information.
-
-[product-screenshot]: assets/images/screenshot_desktop.png
