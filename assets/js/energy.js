@@ -173,7 +173,7 @@ function moveToNextRoundAction() {
     }
     roundDetails.push(newRoundDetails);
     setRoundDetailsToDOM();
-    notification('Round: ' + lastRoundDetails.round, 'info');
+    notification('Round: ' + newRoundDetails.round, 'info');
 }
 
 /**
